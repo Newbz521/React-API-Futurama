@@ -3,14 +3,16 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100%;
   flex-direction: column;
   justify-content: row;
+  font-family: "Rubik Moonrocks", cursive;
 }
 .bgWrap {
   position: absolute;
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   /* border: 5px solid red; */
 }
 .bg {
@@ -37,16 +39,38 @@
     transform: translate3d(0, 0, 0);
   }
 }
-
+.floater {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  animation: floating 2s ease-in-out infinite;
+  top: 10px;
+  z-index: 3;
+}
 .ship {
   display: flex;
   content: url("../pixelShip.png");
-  top: 20%;
-  width: 350px;
-  height: 300px;
+  width: fit-content;
+  height: 200px;
   background-size: cover;
+  top: 2;
+}
+.light {
+  align-self: center;
+  display: flex;
+  opacity: 0.2;
+  border-radius: 30px;
+  border-bottom: 700px solid rgb(255, 255, 255);
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  height: 0px;
+  width: 100px;
+  top: 120px;
   position: absolute;
-  animation: floating 2s ease-in-out infinite;
+  z-index: -1;
+  animation: glow 2s ease-in-out infinite;
 }
 .contentContainer {
   display: flex;
@@ -100,9 +124,67 @@
 }
 
 .results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  position: absolute;
+}
+
+.image {
+  display: flex;
+  height: 350px;
+  width: fit-content;
+  position: absolute;
+  z-index: -1;
+}
+.quotes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+  left: 300px;
+  width: 300px;
   color: white;
-  font-size: 55px;
-  z-index: 5;
+  font-size: 25px;
+  position: absolute;
+}
+.bios {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+  left: 100px;
+  width: 300px;
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  /* top: 350px; */
+}
+.words {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.sayings {
+  display: flex;
+  position: absolute;
+  width: 40%;
+  right: 5px;
+  font-size: 25px;
+  height: fit-content;
+  font-family: "Rubik Moonrocks", cursive;
 }
 
 .wrapper {
@@ -139,5 +221,16 @@
   }
   100% {
     transform: translate(0, 0px);
+  }
+}
+@keyframes glow {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
   }
 }

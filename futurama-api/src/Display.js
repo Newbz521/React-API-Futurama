@@ -1,7 +1,9 @@
 const Display = (props) => {
   return (
     <div className="card">
-      <img src={props.images} />
+      <div className="image">
+        <img src={props.images} />
+      </div>
     </div>
   );
 };

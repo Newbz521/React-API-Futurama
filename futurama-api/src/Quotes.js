@@ -1,16 +1,8 @@
 const Quotes = (props) => {
   return (
     <div className="quotes">
-      {props.firstName}
-      {props.lastName}
-      <br />
-      {props.sayings}
-      <br />
-      {props.species}
-      <br />
-      {props.homePlanet}
-      <br />
-      {props.occupation}
+      <div className="quoteHeader">QUOTES</div>
+      <div className="sayings">{props.sayings}</div>
     </div>
   );
 };

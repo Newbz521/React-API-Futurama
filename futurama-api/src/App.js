@@ -10,7 +10,7 @@ import Quotes from "./Quotes";
 import Bios from "./Description";
 
 function App() {
-  const [search, setSearch] = useState("hello");
+  const [search, setSearch] = useState("Philip");
 
   const selector = (e) => {
     console.log("clicked");
@@ -24,7 +24,7 @@ function App() {
           <div className="ship"></div>
           <div className="light"></div>
         </div>
-        <div className="bio">
+        <div className="bioContainer">
           {allChar.map(
             (allChar) =>
               allChar.name.first.includes(search) && (
@@ -37,20 +37,28 @@ function App() {
                 />
               )
           )}
-        </div>
-        <div className="words">
-          {allChar.map(
-            (allChar) =>
-              allChar.name.first.includes(search) && (
-                <Quotes
-                  sayings={
-                    allChar.sayings[
-                      Math.floor(Math.random() * allChar.sayings.length)
-                    ]
-                  }
-                />
-              )
-          )}
+          <div className="results">
+            {allChar.map(
+              (allChar) =>
+                allChar.name.first.includes(search) && (
+                  <Display images={allChar.images.main} />
+                )
+            )}
+          </div>
+          <div className="words">
+            {allChar.map(
+              (allChar) =>
+                allChar.name.first.includes(search) && (
+                  <Quotes
+                    sayings={
+                      allChar.sayings[
+                        Math.floor(Math.random() * allChar.sayings.length)
+                      ]
+                    }
+                  />
+                )
+            )}
+          </div>
         </div>
         <div className="bgWrap">
           <div className="bg"></div>
@@ -61,14 +69,6 @@ function App() {
               <CharBar key={allChar.id} firstName={allChar.name.first} />
             ))}
           </div>
-        </div>
-        <div className="results">
-          {allChar.map(
-            (allChar) =>
-              allChar.name.first.includes(search) && (
-                <Display images={allChar.images.main} />
-              )
-          )}
         </div>
       </div>
     </div>

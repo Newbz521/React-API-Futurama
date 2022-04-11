@@ -1,6 +1,6 @@
 function CharBar(prop) {
   return (
-    <div className="screen" key={prop.id}>
+    <div className="screen" onClick={prop.callback} key={prop.id}>
       {prop.firstName}
     </div>
   );

@@ -11,7 +11,13 @@ import Bios from "./Description";
 
 function App() {
   const [search, setSearch] = useState("Philip");
+  const [planet, setPlanet] = useState("Earth");
+  const [species, setSpecies] = useState("Human");
 
+  const pickSpecies = (e) => {
+    console.log("clicked");
+    setSpecies(e.target.innerText);
+  };
   const selector = (e) => {
     console.log("clicked");
     setSearch(e.target.innerText);
@@ -19,6 +25,16 @@ function App() {
 
   return (
     <div>
+      <nav>
+        <div className="myList">
+          <div onClick={pickSpecies}>Human</div>
+          <div onClick={pickSpecies}>Mutant</div>
+          <div onClick={pickSpecies}>Robot</div>
+          <div onClick={pickSpecies}>Martian</div>
+          <div onClick={pickSpecies}>Decapodian</div>
+          <div onClick={pickSpecies}>Omicronian</div>
+        </div>
+      </nav>
       <div className="bigContainer">
         <div className="floater">
           <div className="ship"></div>
@@ -64,10 +80,13 @@ function App() {
           <div className="bg"></div>
         </div>
         <div className="contentContainer">
-          <div className="selection" onClick={selector}>
-            {allChar.map((allChar) => (
-              <CharBar key={allChar.id} firstName={allChar.name.first} />
-            ))}
+          <div className="selection">
+            {allChar.map(
+              (allChar) =>
+                allChar.species.includes(species) && (
+                  <CharBar callback={selector} firstName={allChar.name.first} />
+                )
+            )}
           </div>
         </div>
       </div>
